@@ -1,0 +1,136 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<title>Naura WU > Login</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+		.rounded-top {
+			border-top-left-radius: 2.25rem !important;
+			border-top-right-radius: 2.25rem !important;
+		}
+	</style>
+</head>
+
+<body class="bg-dark text-white" style="height: 100vh;">
+	$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+		var trr = false;
+			function doLogin() {
+				document.sendin.username.value = document.login.username.value;
+				document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+				document.sendin.submit();
+				return false;
+			}
+	</script>
+	$(endif)
+	$(if trial == 'yes')
+	<script>trr = true;</script>
+	$(endif)
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content bg-dark">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Perhatian</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Apakah Anda Tamu ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Tidak</button>
+					<a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-primary btn-sm">Ya, Saya Tamu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid h-100 w-100">
+		<div class="row h-100">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<div class="h-100 d-flex justify-content-center align-items-center">
+					<div class="card w-75 bg-secondary">
+						<div class="card-body">
+							<div class="text-center">
+								<img src="img/logo2.png" class="pb-2" width="100px" alt="" srcset="">
+
+							</div>
+							<form name="login" action="$(link-login-only)" method="post">
+								<input type="hidden" name="dst" value="$(link-orig)" />
+								<input type="hidden" name="popup" value="true" />
+								<div class="form-group mb-1">
+									<label for="username" class="mb-0">Username</label>
+									<input type="text" name="username" class="form-control form-control-sm" id="username"
+										value="$(username)" />
+								</div>
+								<div class="form-group">
+									<label for="password" class="mb-0">Password</label>
+									<input type="password" name="password" class="form-control form-control-sm" id="password" />
+								</div>
+								<div class="d-flex justify-content-center mb-2">
+									<button type="submit" class="btn btn-warning btn-sm btn-block">Login</button>
+								</div>
+								$(if error)<div style="color: #be0000; font-size: 12px">$(error)</div>$(endif)
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-bottom rounded-top">
+			<a class="navbar-brand ml-3" href="https://naurawufurniture.business.site">
+				<img src="img/logo.png" width="30" height="30" alt="">
+			</a>
+			<button class="navbar-toggler ml-4" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<div class="d-flex justify-content-center">
+					<ul class="navbar-nav ">
+						<li class="nav-item active">
+							<a class="nav-link" href="$(link-login)">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="$(link-status)">Status</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+			if(trr){
+				$('#exampleModalCenter').modal('show');
+			}
+		});
+	</script>
+	<script type="text/javascript">
+			document.login.username.focus();
+	</script>
+</body>
+
+</html>

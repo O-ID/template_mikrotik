@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Naura WU > Status</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+		.rounded-top {
+			border-top-left-radius: 2.25rem !important;
+			border-top-right-radius: 2.25rem !important;
+		}
+	</style>
+</head>
+<body class="bg-dark text-white" style="height: 100vh;">
+	<div class="container-fluid h-100 w-100">
+		<div class="row h-100">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<div class="h-100 d-flex justify-content-center align-items-center">
+					<div class="card w-75 bg-secondary">
+						<div class="card-body">
+							<div class="text-center">
+								<img src="img/logo2.png" class="pb-2" width="100px" alt="" srcset="">
+							</div>
+							$(if login-by == 'trial')
+								<p class="card-text text-center">Anda Login Sebagai Tamu</p>
+							$(elif login-by != 'mac')
+								<p class="card-text text-center">Anda Login Sebagai $(username)!</p>
+							$(endif)
+							<table class="table table-striped table-sm mb-2">
+								<tbody>
+								<tr>
+									<td>IP address:</td>
+									<td>$(ip)</td>
+								</tr>
+								<tr>
+									<td>bytes up/down</td>
+									<td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+								</tr>
+								$(if session-time-left)
+								<tr>
+									<td>connected / left:</td>
+									<td>$(uptime) / $(session-time-left)</td>
+								</tr>
+								$(else)
+								<tr>
+									<td>connected:</td>
+									<td>$(uptime)</td>
+								</tr>
+								$(endif)
+								$(if refresh-timeout)
+								<tr>
+									<td>status refresh</td>
+									<td>$(refresh-timeout)</td>
+									$(endif)
+								</tbody>
+							</table>
+							$(if error)<div style="color: #be0000; font-size: 12px">$(error)</div>$(endif)
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-bottom rounded-top">
+			<a class="navbar-brand ml-3" href="https://naurawufurniture.business.site">
+				<img src="img/logo.png" width="30" height="30" alt="">
+			</a>
+			<button class="navbar-toggler ml-4" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<div class="d-flex justify-content-center">
+					<ul class="navbar-nav ">
+						<li class="nav-item">
+							<a class="nav-link" href="$(link-login)">Login</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="$(link-status)">Status</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
